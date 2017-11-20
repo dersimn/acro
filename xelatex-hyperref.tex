@@ -1,0 +1,27 @@
+\documentclass{article}
+
+% In your project directory, create a subfolder "latex-acro" with the contents of this repository, for e.g. with:
+%
+%   git clone https://bitbucket.org/dersimn/latex-acro.git
+%
+% or simply download and unzip the project contents, then use:
+\usepackage[hyperref=true]{latex-acro/acro}
+% instead of:
+% \usepackage[hyperref=true]{acro}
+% compile with XeLaTeX
+
+\DeclareAcronym{test}{
+    short = test,
+    long = test long,
+}
+
+% red boxes around link
+\usepackage{hyperref}
+% no red boxes around link
+%\usepackage[colorlinks=true, breaklinks=true, linkcolor=black, citecolor=black]{hyperref}
+
+\begin{document}
+    \printacronyms
+    \clearpage
+    \ac{test}
+\end{document}

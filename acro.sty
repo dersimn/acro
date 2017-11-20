@@ -28,7 +28,7 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\RequirePackage{expl3,xparse,l3keys2e,xtemplate,etoolbox}
+\RequirePackage{expl3,xparse,l3keys2e,xtemplate,etoolbox,ifxetex}
 \ProvidesExplPackage
   {acro}
   {2017/08/28}
@@ -658,7 +658,11 @@
       {
         \tl_set:Nn #1
            {
-             \acro_hyper_link:nn {#2} { \phantom {#3} }
+           	 \ifxetex
+               \acro_hyper_link:nn {#2} { \XeTeXLinkBox{\phantom {#3}} }
+             \else
+               \acro_hyper_link:nn {#2} { \phantom {#3} }
+             \fi
              \acro_if_is_single:nTF {#2}
                { \hbox_overlap_left:n {#3} }
                { \acro_color_link:n { \hbox_overlap_left:n {#3} } }
